@@ -1,0 +1,6 @@
+eeb-virtuoso-prj/test
+eeb-virtuoso-prj/lib/program/esb-lk-module.js
+eeb-virtuoso-prj/lib/program/etl-in-zymodel.js
+eeb-virtuoso-prj/lib/program/etl-out-zy-model.js
+eeb-virtuoso-prj/lib/log-sys-status.js
+.svn
