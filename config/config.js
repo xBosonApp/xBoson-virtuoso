@@ -24,7 +24,7 @@ module.exports = {
 
 
   eeb_zy: {
-    // 是否有平台开关
+    // 是否有平台开关, 影响部分运行时组件的启用状态
     has_zy_server : true,
 
     // 平台的 ip 和 port
@@ -37,10 +37,12 @@ module.exports = {
     // 本地数据库目录
     local_db_dir   : local_dir,
 
-    // http 客户端统一端口
+    // 运行时组件的 http 客户端默认端口
     http_server_port : 8001,
 
+    // 这个参数必须与 conductor 的配置相同, 才能连接成功
     ws_client : {
+      // 必须是完整的 http:// 的协议, 否则无法连接切无连接日志
       server_url  : 'http://zr-i.com:8013',
       proxy_pw    : '3n6$5432.fxnvfje3w',
     }
