@@ -1,13 +1,12 @@
 {
     "name": "eeb-virtuoso-prj",
-    "version": "0.1.50",
+    "version": "0.1.60",
     "description": "EEB 集群节点",
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
         "install": "node install.js",
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "prepublish": "node -e \"require('ver--1')();\""
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
@@ -56,6 +55,5 @@
         "xson-lib": "^0.1.1"
     },
     "devDependencies": {
-        "ver--1": "^0.1.13"
     }
 }

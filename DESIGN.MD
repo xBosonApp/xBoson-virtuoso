@@ -3,7 +3,7 @@
 > [DT] 数据结构
 > [PG] 程序接口
 > [HI] Http 接口, 基于 /eeb/service/
-> 
+>
 > 回调函数 RCB 的定义 function(err, data) 发生错误则保存在 err 中
 > err:Error()
 
@@ -83,7 +83,7 @@
   [Ou] HttpRet.data = targetID
 
 * /testtarget 测试运行一个目标, 没有上下文相关性
-  [in] post  { tc -- targetConf , data -- 父节点运行数据 (可以空), t -- className } 
+  [in] post  { tc -- targetConf , data -- 父节点运行数据 (可以空), t -- className }
   [Ou] HttpRet.data = FlowData
 
 * /test 测试运行一个任务  (首先保存这个配置)
@@ -158,10 +158,10 @@
   // 首个 schedule.id == rid 必须!
   schedule : { id, __next_schedule: { id, __next_schedule: {...} } }
 
-  // 这是个所以子任务的列表(无序) 
+  // 这是个所以子任务的列表(无序)
   targets: {
 
-    // key 是这个任务的id, 与对象中的 id 属性相同 
+    // key 是这个任务的id, 与对象中的 id 属性相同
     'targetID': { // targetConfig
       tid: 'targetID' String
       tname: String
@@ -184,8 +184,8 @@
       run_config: {
         name : '名称'
         _type : '请求类型, 用于进行非保存操作'
-        
-        bizlog : { 
+
+        bizlog : {
           // 业务日志配置是可选的, 当调用 Interactive.bizlog 时
           // 会检查这些配置是否对应, 然后写出日志
           '日志名称' : {
@@ -214,7 +214,7 @@
 }
 
 
-### [DT] History 
+### [DT] History
 
 // 历史记录对象 HistoryContent
 {
@@ -254,7 +254,7 @@
 {
   // 返回一个数组, 数组中放置数据列名, 数组索引与列的位置对应
   getHead()
-  // 返回类型的数组, 索引处的数据与 head 的位置对应 
+  // 返回类型的数组, 索引处的数据与 head 的位置对应
   getType()
   // 返回当前行数据的数组, 索引处的数据与 head 的位置对应,
   // 如果没有数据, 则这个方法返回 null
@@ -315,7 +315,7 @@ RunnerObj 导出函数 [待定]
   // 停止正在运行的任务, RCB:data 为 null
   test('RunnerConfig':JSON, RCB)
 
-  // 返回历史记录对象 HistoryList, 
+  // 返回历史记录对象 HistoryList,
   // 从位置 being 共返回 length 个记录到 RCB:data
   getHistory('RunnerConfigId':String, 'being':Number, 'length':Number, RCB)
 }
@@ -345,9 +345,10 @@ RunnerObj 导出函数 [待定]
   // ! 如果程序不调用这个方法, 会导致整个任务挂起
   runOver(FlowData[, nextTargetID])
 
-  // 向父节点传播事件, 父节点是否继续传播取决于节点本身
+  // 向父节点传播事件, 父节点是否继续传播取决于节点本身的程序
   // 事件类型在 lib/type-event.js 中定义
-  sendEvent('eventname':String, 'data':Object)
+  sendEvent('eventname':String, 'data1':Object, 'data2':Object)
+  sendError(errorObject:Error/String, sendsomedata:Object, errorcode:int)
 
   // 注册事件监听器, 监听器是截断式的, 在一条路线上后注册
   // 的处理器会屏蔽前一次注册的事件
@@ -358,7 +359,7 @@ RunnerObj 导出函数 [待定]
   // 会保存为队列, 一旦相同名字的监听器被注册, 所有该事件的数据
   // 都会被发往处理器
   // ! 未完成 !
-  posthumous('eventname':String, 'data':Object)
+  posthumous('eventname':String, 'data1':Object, 'data2':Object)
 
   // 注册监听器, 接收由父节点发送的消息
   // ! 未完成 !
@@ -388,9 +389,9 @@ RunnerObj 导出函数 [待定]
 }
 
 
-### [PG] TargetProgram 
+### [PG] TargetProgram
 
-* 目录在 lib/target/* 
+* 目录在 lib/target/*
 * 每个功能是一个文件, 导出方法给引擎使用
 * 所有的方法都是可重入的
 
@@ -419,7 +420,7 @@ RunnerObj 导出函数 [待定]
   // 是否在工具栏中显示, 默认 false
   not_display : false
 
-  // 检查配置是否有效, 
+  // 检查配置是否有效,
   // RCB:err = { 'configname':'msg', ... } 意思是
   // configname 指明的 input 字段出现了 msg 的问题
   // 如果成功 则什么都不返回, 或者在 RCB:err 放入消息
@@ -433,7 +434,7 @@ RunnerObj 导出函数 [待定]
 
   // 运行这个任务, limit(过时的设计) 指定一个数据限制, 程序生成的数据行
   // 不能超过这个限制, 当测试运行时, 这个参数被指定, 正式运行时总是 null
-  // 测试运行时 is_test 为 true, 
+  // 测试运行时 is_test 为 true,
   run(Interactive, limit, is_test)
 }
 
