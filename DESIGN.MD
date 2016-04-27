@@ -159,7 +159,7 @@
   schedule : { id, __next_schedule: { id, __next_schedule: {...} } }
 
   // 这是个所以子任务的列表(无序)
-  targets: {
+  targets: []{
 
     // key 是这个任务的id, 与对象中的 id 属性相同
     'targetID': { // targetConfig
@@ -178,6 +178,9 @@
         .....
       }
 
+      // 发生异常时的目标 tid, 可以空
+      exception_tid: 'targetID1'
+
       // 与程序相关的配置项, 由程序自己修改
       // 每个程序的配置项都是不同的
       // configJSON == run_config
@@ -185,7 +188,7 @@
         name : '名称'
         _type : '请求类型, 用于进行非保存操作'
 
-        bizlog : {
+        bizlog : { // !! 业务日志将删除
           // 业务日志配置是可选的, 当调用 Interactive.bizlog 时
           // 会检查这些配置是否对应, 然后写出日志
           '日志名称' : {
@@ -202,7 +205,7 @@
 
 
   // 任务之间的关系, 绘制器也使用这个属性来绘制图形
-  dependent: {
+  dependent: []{
     'targetID' : {
       // 当前节点的子节点
       child: [ 'targetID1', 'targetID2' ... ]
@@ -348,6 +351,9 @@ RunnerObj 导出函数 [待定]
   // 向父节点传播事件, 父节点是否继续传播取决于节点本身的程序
   // 事件类型在 lib/type-event.js 中定义
   sendEvent('eventname':String, 'data1':Object, 'data2':Object)
+
+  // 发出错误消息, 并记入日志
+  // 绑定错误数据到 errorObject{ data, code }
   sendError(errorObject:Error/String, sendsomedata:Object, errorcode:int)
 
   // 注册事件监听器, 监听器是截断式的, 在一条路线上后注册
@@ -371,7 +377,8 @@ RunnerObj 导出函数 [待定]
   log(String[, Data:Object])
 
   // 产生一条业务日志, 日志名称必须在 createConfig().bizlog 中有对应项
-  // 当名称无效时, 该条日志被忽略
+  // 当名称无效时, 该条日志被忽略,
+  // 现在业务日志只是产生一个异常, 需要在错误链中捕获
   bizlog(name:String, data:flowData.ROW_DATA)
 
   // 读取要处理的数据, 通常是上一个 TargetProgram 生成的
