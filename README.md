@@ -24,17 +24,25 @@
 ### 程序配置
 
 1. 本地数据存储位置
-    config/config.js -- eeb_zy.local_db_dir 
+    config/config.js -- eeb_zy.local_db_dir
 
 2. 本地数据库配置
-    config/config.js -- eeb_zy.log_db 
+    config/config.js -- eeb_zy.log_db
 
 3. 平台引用配置
     config/config.js -- eeb_zy.port, eeb_zy.ip
 
 4. 部分 UI 资源因自平台, 配置页面引用
-    www/private/tag/setenv.htm, 
+    www/private/tag/setenv.htm,
     修改 server-s 的设置, 修改 zy.g.host.ui, zy.g.host.api 的设置
+
+
+### 组件设计原则
+
+
+1. 使用 sendError 发出程序错误,
+2. 不要拦截系统消息
+3. 使用 log 发送日志
 
 
 ### 运行

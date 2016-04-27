@@ -169,6 +169,9 @@
       // 执行这个任务的程序 ID
       programID: String
 
+      // 发生异常时的目标 tid, 可以空
+      exception_tid: 'targetID1'
+
       // 显示配置, 这个是通用的
       disp_config: {
         // 图标
@@ -177,9 +180,6 @@
         x:Number y:Number
         .....
       }
-
-      // 发生异常时的目标 tid, 可以空
-      exception_tid: 'targetID1'
 
       // 与程序相关的配置项, 由程序自己修改
       // 每个程序的配置项都是不同的
