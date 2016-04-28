@@ -1,6 +1,6 @@
 {
     "name": "eeb-virtuoso-prj",
-    "version": "0.1.60",
+    "version": "0.2.1",
     "description": "EEB 集群节点",
     "main": "index.js",
     "scripts": {
