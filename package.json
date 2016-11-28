@@ -1,6 +1,6 @@
 {
     "name": "eeb-virtuoso-prj",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "description": "EEB 集群节点",
     "main": "index.js",
     "scripts": {
@@ -54,6 +54,5 @@
         "xml2json": "^0.6.1",
         "xson-lib": "^0.1.1"
     },
-    "devDependencies": {
-    }
+    "devDependencies": {}
 }
