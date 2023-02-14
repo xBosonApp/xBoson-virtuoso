@@ -1,21 +1,22 @@
-# EEB 集群节点, 流运算内核
+# EEB 任务执行节点, 边缘运算节点
 
 > 在 node 0.10 下运行会出现内存溢出或进程崩溃的情况
 
 
 ### 安装
+
 `npm install eeb-virtuoso-prj --save`
 
 
 ### 依赖
+
+* [EEB 中心控制端](https://github.com/yanmingsohu/xBoson-conductor)
 * [redis-server](http://www.redis.cn/)
 * [kafka-server](http://kafka.apache.org/documentation.html)
-* [zr-server](http://zr-i.com:8088/ui/login.html)
 * [java](http://www.java.com/)
 * [vs2012 on window](https://www.visualstudio.com/zh-cn/products/free-developer-offers-vs.aspx)
 * [gcc on linux](http://gcc.gnu.org/)
 * [Python27](https://www.python.org/download/releases/2.7/)
-* [NPM](https://github.com/npm/npm)
 
 > redis 安装不正确会导致运行缓慢, kafka 不是必须的 <br/>
 > 可以在本地安装 web 服务器挂 zr-ui
@@ -195,7 +196,7 @@
 
 ### [DT] RunnerConfig 保存一个流程的所有数据
 
-```JSON
+```JS
 {
   // 任务名称, 可重复?
   name : String
@@ -276,7 +277,7 @@
 
 ### [DT] History
 
-```JSON
+```JS
 // 历史记录对象 HistoryContent
 {
   // 运行配置的引用
@@ -307,7 +308,7 @@
 
 ### [PG] FlowData 在目标之间传递数据
 
-```JSON
+```JS
 // 这是一个迭代器, 初始位置在 -1
 // 这个迭代器与一个文件关联, 数据保持在文件中
 // 所以不用担心内存溢出
@@ -368,7 +369,7 @@
 * 引擎通过 Interactive 与 TargetProgram 交互
 * 如果一个任务有多个入口点以致同时运行多个路径, 一条路径出错, 全部会停止(默认)
 
-```JSON
+```JS
 RunnerObj 导出函数 [待定]
 {
   // 启动一个任务, RCB:data 为 null
@@ -388,7 +389,7 @@ RunnerObj 导出函数 [待定]
 ### [PG] Interactive
 
 * configJSON 是 [RunnerConfig/targets/] 中的片段
-```JSON
+```JS
 {
   // 每一个运行时上下文都有一个唯一的 ID
   // 多个父节点汇聚数据到一个子节点时会用到
@@ -463,7 +464,7 @@ RunnerObj 导出函数 [待定]
 * 每个功能是一个文件, 导出方法给引擎使用
 * 所有的方法都是可重入的
 
-```JSON
+```JS
 // program 导出的对象 / 方法
 {
   // 程序名称
