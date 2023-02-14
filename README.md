@@ -2,24 +2,16 @@
 
 > 在 node 0.10 下运行会出现内存溢出或进程崩溃的情况
 
+该项目由 [上海竹呗信息技术有限公司](https://xboson.net/) 提供技术支持.
+
 
 ### 安装
 
 `npm install eeb-virtuoso-prj --save`
 
+### 运行
 
-### 依赖
-
-* [EEB 中心控制端](https://github.com/yanmingsohu/xBoson-conductor)
-* [redis-server](http://www.redis.cn/)
-* [kafka-server](http://kafka.apache.org/documentation.html)
-* [java](http://www.java.com/)
-* [vs2012 on window](https://www.visualstudio.com/zh-cn/products/free-developer-offers-vs.aspx)
-* [gcc on linux](http://gcc.gnu.org/)
-* [Python27](https://www.python.org/download/releases/2.7/)
-
-> redis 安装不正确会导致运行缓慢, kafka 不是必须的 <br/>
-> 可以在本地安装 web 服务器挂 zr-ui
+`npm start`
 
 
 ### 程序配置
@@ -38,17 +30,24 @@
     修改 server-s 的设置, 修改 zy.g.host.ui, zy.g.host.api 的设置
 
 
-### 组件设计原则
+### 依赖
 
+* [EEB 中心控制端](https://github.com/yanmingsohu/xBoson-conductor)
+* [redis-server](http://www.redis.cn/)
+* [kafka-server](http://kafka.apache.org/documentation.html)
+* [java](http://www.java.com/)
+* [VS on window](https://www.visualstudio.com/zh-cn/products/free-developer-offers-vs.aspx)
+* [gcc on linux](http://gcc.gnu.org/)
+
+> redis 安装不正确会导致运行缓慢, kafka 不是必须的   
+> 可以在本地安装 web 服务器挂 zr-ui
+
+
+### 组件设计原则
 
 1. 使用 sendError 发出程序错误,
 2. 不要拦截系统消息
 3. 使用 log 发送日志
-
-
-### 运行
-
-`npm start`
 
 
 # 运行时内核结构设计
